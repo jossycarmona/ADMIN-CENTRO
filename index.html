@@ -75,10 +75,9 @@ details[open] summary { margin-bottom:8px; }
 .acnum { width:30px; height:30px; border-radius:50%; color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:.9rem; }
 .s-rojo { background:var(--bad); } .s-ambar { background:var(--warn); } .s-azul { background:var(--azul); }
 .actit { font-weight:700; font-size:1rem; } .acdet { font-size:.85rem; color:var(--mut); margin-top:2px; }
-.dgrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:10px; }
-.dcard { background:var(--bg); border:1px solid var(--line); border-radius:10px; padding:10px 12px; text-decoration:none; color:var(--tx); display:flex; flex-direction:column; gap:2px; }
-.dcard b { font-size:.88rem; } .dcard span { font-size:.75rem; color:var(--mut); }
-.dcard:hover { border-color:var(--acc); }
+.navbtns { display:flex; gap:8px; flex-wrap:wrap; margin-left:auto; }
+.navbtn { background:var(--card); border:1px solid var(--line); color:var(--acc); font-size:.75rem; font-weight:700; letter-spacing:.5px; padding:5px 12px; border-radius:8px; text-decoration:none; }
+.navbtn:hover { border-color:var(--acc); background:var(--accsoft); }
 footer { text-align:center; color:var(--mut); font-size:.78rem; margin:18px 0; }
 </style>
 </head>
@@ -86,6 +85,7 @@ footer { text-align:center; color:var(--mut); font-size:.78rem; margin:18px 0; }
 <header>
   <h1>🏛️ Centro de Mando Administrativo</h1>
   <span class="chip rojo">Requiere acción</span>
+  <span class="navbtns"><a class="navbtn" href="https://jossycarmona.github.io/ADMIN-DEVIART/" target="_blank">ADMIN</a><a class="navbtn" href="https://jossycarmona.github.io/IVA-2026/" target="_blank">IVA</a><a class="navbtn" href="https://jossycarmona.github.io/INGRESOS-2026/" target="_blank">INGRESOS</a><a class="navbtn" href="https://jossycarmona.github.io/INVERSION-BBVA/" target="_blank">INVERSION</a></span>
   <div class="sub">DEVIART S.A. de C.V. · mar 28 de julio de 2026</div>
 </header>
 
@@ -191,11 +191,6 @@ footer { text-align:center; color:var(--mut); font-size:.78rem; margin:18px 0; }
 <div class="hero "><div class="hv">$755K</div><div class="hl">Ganancia 12 meses</div><div class="hs">ISR retenido acreditable $98,038</div></div>
 </div>
 <div class="nota">CETES 28d promedio 7.00% (−1.25 pp) · Inflación 3.37% (+2.4 pp real). Revisión mensual al llegar el estado de cuenta.</div></section>
-
-<section class="card">
-<div class="sechead"><div><h2>🗂️ Todos los tableros</h2></div></div>
-<div class="dgrid"><a class="dcard" href="https://jossycarmona.github.io/ADMIN-DEVIART/" target="_blank"><b>Semanal Dirección</b><span>Posición bancaria · Otakara · Cobranza · Gastos fijos</span></a><a class="dcard" href="https://jossycarmona.github.io/IVA-2026/" target="_blank"><b>IVA</b><span>Ingresos vs egresos BBVA + Santander</span></a><a class="dcard" href="https://jossycarmona.github.io/VENTAS-DEVIART/distribuidores.html" target="_blank"><b>Ventas Distribuidores</b><span>Panel diario</span></a><a class="dcard" href="https://jossycarmona.github.io/VENTAS-DEVIART/impresion.html" target="_blank"><b>Ventas Impresión</b><span>Panel diario</span></a><a class="dcard" href="https://jossycarmona.github.io/INGRESOS-2026/" target="_blank"><b>Ingresos UUPZ</b><span>Mensual por canal</span></a><a class="dcard" href="https://jossycarmona.github.io/INVERSION-BBVA/" target="_blank"><b>Inversión BBVA</b><span>Fondo BBVAPYM</span></a><a class="dcard" href="https://jossycarmona.github.io/RENTABILIDAD-FDS/" target="_blank"><b>Rentabilidad FDS</b><span>Equipo fin de semana</span></a></div>
-</section>
 
 <footer>Centro de Mando Administrativo · generado mar 28 de julio de 2026 · fuentes: Odoo (pagos, Otakara, pólizas), saldos bancarios (Al 28/Jul/2026), pago provisional Junio 2026, IVA por flujo al 28/07/2026, inversión al 2026-07-27</footer>
 </body>
