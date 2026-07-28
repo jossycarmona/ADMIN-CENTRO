@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centro de Mando Administrativo — DEVIART</title>
+<style>
+:root {
+  --bg:#f6f7fb; --card:#ffffff; --tx:#111827; --mut:#6b7280; --line:#e5e7eb;
+  --acc:#7c3aed; --accsoft:#ede9fe;
+  --ok:#16a34a; --bad:#dc2626; --warn:#d97706; --azul:#2563eb;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#0b0f1a; --card:#141a2a; --tx:#e5e7eb; --mut:#94a3b8; --line:#26304a; --accsoft:#2b2350; }
+}
+* { box-sizing:border-box; margin:0; }
+body { background:var(--bg); color:var(--tx); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; padding:18px; max-width:1180px; margin:0 auto; }
+header { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-bottom:16px; }
+header h1 { font-size:1.45rem; } header .sub { color:var(--mut); font-size:.9rem; width:100%; }
+.chip { padding:5px 14px; border-radius:999px; font-weight:700; font-size:.85rem; }
+.chip.rojo { background:#fee2e2; color:#b91c1c; } .chip.ambar { background:#fef3c7; color:#b45309; } .chip.verde { background:#dcfce7; color:#15803d; }
+@media (prefers-color-scheme: dark) {
+  .chip.rojo { background:#450a0a; color:#fca5a5; } .chip.ambar { background:#451a03; color:#fcd34d; } .chip.verde { background:#052e16; color:#86efac; }
+}
+.card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px; margin-bottom:16px; }
+.sechead { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px; }
+.sechead > div { display:flex; align-items:center; gap:10px; }
+.sechead h2 { font-size:1.1rem; }
+.pnum { background:var(--acc); color:#fff; font-weight:800; font-size:.8rem; border-radius:8px; padding:3px 8px; }
+.badge { background:var(--accsoft); color:var(--acc); font-size:.75rem; font-weight:700; padding:3px 10px; border-radius:999px; }
+@media (prefers-color-scheme: dark) { .badge { color:#c4b5fd; } }
+.verdet { color:var(--acc); font-size:.85rem; font-weight:600; text-decoration:none; margin-left:10px; }
+.heroes { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-bottom:14px; }
+.hero { background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:12px 14px; min-width:0; }
+.hero .hv { font-size:1.55rem; font-weight:800; letter-spacing:-.5px; }
+.hero .hl { font-size:.82rem; font-weight:600; margin-top:2px; }
+.hero .hs { font-size:.75rem; color:var(--mut); margin-top:2px; }
+.hero.ok .hv { color:var(--ok); } .hero.bad .hv { color:var(--bad); } .hero.warn .hv { color:var(--warn); }
+.tbl { width:100%; border-collapse:collapse; font-size:.88rem; }
+.tbl th { text-align:left; color:var(--mut); font-size:.75rem; text-transform:uppercase; letter-spacing:.4px; padding:6px 8px; border-bottom:1px solid var(--line); }
+.tbl td { padding:7px 8px; border-bottom:1px solid var(--line); }
+.tbl .num, .tbl th.num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.tbl .totrow td { font-weight:800; border-top:2px solid var(--line); }
+.rowbad td { color:var(--bad); font-weight:600; }
+.mut { color:var(--mut); } .small { font-size:.78rem; }
+.dot { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:6px; }
+.nota { background:var(--bg); border-left:3px solid var(--acc); border-radius:6px; padding:8px 12px; font-size:.83rem; color:var(--mut); margin-top:10px; }
+h3 { font-size:.85rem; text-transform:uppercase; letter-spacing:.5px; color:var(--mut); margin:16px 0 8px; }
+.tag { font-size:.68rem; font-weight:700; padding:2px 7px; border-radius:6px; margin-right:4px; }
+.t-isr { background:#dbeafe; color:#1d4ed8; } .t-iva { background:#fce7f3; color:#be185d; } .t-ret { background:#f3f4f6; color:#374151; }
+@media (prefers-color-scheme: dark) { .t-isr { background:#172554; color:#93c5fd; } .t-iva { background:#500724; color:#f9a8d4; } .t-ret { background:#1f2937; color:#d1d5db; } }
+.bars { display:flex; flex-direction:column; gap:6px; }
+.brow { display:grid; grid-template-columns:110px 1fr 130px; gap:10px; align-items:center; font-size:.82rem; }
+.blbl { color:var(--mut); white-space:nowrap; } .bad-t { color:var(--bad); font-weight:700; }
+.btrack { background:var(--bg); border:1px solid var(--line); border-radius:6px; height:18px; overflow:hidden; }
+.bfill { background:var(--acc); height:100%; border-radius:5px; } .bf-bad { background:var(--bad); }
+.bval { font-variant-numeric:tabular-nums; white-space:nowrap; }
+.accion { display:flex; gap:12px; align-items:flex-start; padding:9px 0; border-bottom:1px solid var(--line); }
+.accion:last-child { border-bottom:none; }
+.acnum { width:28px; height:28px; border-radius:50%; color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:.85rem; }
+.s-rojo { background:var(--bad); } .s-ambar { background:var(--warn); } .s-azul { background:var(--azul); }
+.actit { font-weight:700; font-size:.92rem; } .acdet { font-size:.8rem; color:var(--mut); margin-top:1px; }
+.dgrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:10px; }
+.dcard { background:var(--bg); border:1px solid var(--line); border-radius:10px; padding:10px 12px; text-decoration:none; color:var(--tx); display:flex; flex-direction:column; gap:2px; }
+.dcard b { font-size:.85rem; } .dcard span { font-size:.72rem; color:var(--mut); }
+.dcard:hover { border-color:var(--acc); }
+footer { text-align:center; color:var(--mut); font-size:.75rem; margin:18px 0; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🏛️ Centro de Mando Administrativo</h1>
+  <span class="chip rojo">Requiere acción</span>
+  <div class="sub">DEVIART S.A. de C.V. · mar 28 de julio de 2026 · Prioridades: P1 Bancos · P2 Impuestos · P3 Pagos · P4 Otakara · P5 Inversión</div>
+</header>
+
+<section class="card">
+<div class="sechead"><div><h2>📋 Qué hacer hoy</h2></div></div>
+<div class="accion"><div class="acnum s-rojo">1</div><div><div class="actit">Cobrar a Otakara $421,527</div><div class="acdet">2 facturas vencidas hace 7 días (FDIS 00222, 00223).</div></div></div><div class="accion"><div class="acnum s-ambar">2</div><div><div class="actit">Ponerse al corriente con Otakara: $361,223</div><div class="acdet">18 facturas por pagar ya vencidas (25–27 jul).</div></div></div><div class="accion"><div class="acnum s-ambar">3</div><div><div class="actit">Pagar 6 facturas vencidas de otros proveedores: $34,779</div><div class="acdet">La mayor: BOLSIARANDA $15,312 (venció dom 26/jul).</div></div></div><div class="accion"><div class="acnum s-ambar">4</div><div><div class="actit">Programar los pagos de los próximos 7 días: $682,690</div><div class="acdet">23 facturas; la mayor ESTAFETA MEXICANA $138,215 vence el mié 29/jul.</div></div></div><div class="accion"><div class="acnum s-azul">5</div><div><div class="actit">Aclarar 4 facturas antiguas por $118,395</div><div class="acdet">Llevan más de 45 días vencidas en Odoo (ADAPTA (SERV. TURISTICOS Y ARQ.), EXPERIENCIA Y SATISFACCION CON VALOR, PROMOGRAPHIC &amp; DESIGN): confirmar si siguen vigentes o falta aplicar pago / nota de crédito.</div></div></div>
+</section>
+
+<section class="card">
+<div class="sechead"><div><span class="pnum">P1</span><h2>Posición Bancaria</h2></div><div class="secright"><span class="badge">Al 27/Jul/2026</span><a class="verdet" href="https://jossycarmona.github.io/ADMIN-DEVIART/" target="_blank">Ver detalle →</a></div></div>
+<div class="heroes">
+<div class="hero "><div class="hv">$19.14M</div><div class="hl">Posición total</div><div class="hs">bancos + inversión</div></div>
+<div class="hero "><div class="hv">$2.99M</div><div class="hl">Liquidez inmediata</div><div class="hs">cuentas corrientes, sin la inversión</div></div>
+<div class="hero ok"><div class="hv">2.8×</div><div class="hl">Cobertura de pagos</div><div class="hs">la liquidez cubre 2.8 veces los compromisos a 7 días ($1.08M)</div></div>
+</div>
+<table class="tbl"><thead><tr><th>Banco</th><th class="num">Saldo</th><th>Cuentas</th></tr></thead><tbody><tr><td><span class="dot" style="background:#004481"></span>BBVA <span class="mut">(MXN)</span></td><td class="num">$16,717,971.16</td><td class="mut small">Inversión •8097 $16,145,235.86 · Bancomer •9144 $572,735.30</td></tr><tr><td><span class="dot" style="background:#EC0000"></span>Santander <span class="mut">(MXN)</span></td><td class="num">$1,152,267.48</td><td class="mut small">Cuenta corriente 65504129495 $1,152,267.48</td></tr><tr><td><span class="dot" style="background:#1B3A6B"></span>Monex <span class="mut">(USD)</span></td><td class="num">$1,267,216.56</td><td class="mut small">$72,497.30 USD · T/C $17.48 $1,267,216.56</td></tr></tbody></table>
+<div class="nota">Crediproveedores BBVA por vencer: <b>$111,123.50</b> (DIA8082097 vence 06/Ago/2026) — sale de la cuenta corriente ese día.</div></section>
+<section class="card">
+<div class="sechead"><div><span class="pnum">P2</span><h2>Impuestos — IVA · ISR · Retenciones</h2></div><div class="secright"><span class="badge">Declarado: Junio 2026</span><a class="verdet" href="https://jossycarmona.github.io/IVA-2026/" target="_blank">Ver detalle →</a></div></div>
+<div class="heroes">
+<div class="hero "><div class="hv">$508K</div><div class="hl">Paquete fiscal Junio 2026</div><div class="hs">IVA + ISR + retenciones declarados</div></div>
+<div class="hero "><div class="hv">$144K</div><div class="hl">IVA del mes en curso</div><div class="hs">estimado por flujo bancario al 27/07/2026 · Julio 2026</div></div>
+<div class="hero ok"><div class="hv">lun 17/ago</div><div class="hl">Próxima declaración</div><div class="hs">período Julio 2026 · en 20 días</div></div>
+</div>
+<table class="tbl"><thead><tr><th>Concepto (declaración Junio 2026)</th><th class="num">Monto</th></tr></thead>
+<tbody><tr><td><span class="tag t-isr">ISR</span> ISR Personas Morales (pago provisional)</td><td class="num">$19,206.63</td></tr><tr><td><span class="tag t-iva">IVA</span> IVA (neto, ya restadas retenciones de plataformas)</td><td class="num">$225,547.09</td></tr><tr><td><span class="tag t-ret">Retención</span> ISR retención × Sueldos y salarios</td><td class="num">$7,862.00</td></tr><tr><td><span class="tag t-ret">Retención</span> ISR retención × Honorarios / RESICO</td><td class="num">$879.40</td></tr><tr><td><span class="tag t-ret">Retención</span> ISR retención × Arrendamiento</td><td class="num">$9,341.24</td></tr><tr><td><span class="tag t-ret">Retención</span> ISR retención × Dividendos</td><td class="num">$229,994.81</td></tr><tr><td><span class="tag t-ret">Retención</span> IVA retención × Honorarios</td><td class="num">$5,246.28</td></tr><tr><td><span class="tag t-ret">Retención</span> IVA retención × Arrendamiento</td><td class="num">$9,964.02</td></tr><tr class="totrow"><td>Total del paquete</td><td class="num">$508,041.47</td></tr></tbody></table>
+<div class="nota">Las plataformas (ML, Amazon, TikTok) ya retuvieron y enteraron $167,764 en Junio 2026 (ISR $39,944 + IVA $127,820) — por eso el IVA bruto de $353,367 bajó a $225,547.</div>
+<div class="nota">El ISR ret × Dividendos ($229,995) fue el concepto más grande del paquete de junio — es puntual, no recurrente; el paquete &#x27;normal&#x27; ronda ~$278K sin dividendos.</div></section>
+<section class="card">
+<div class="sechead"><div><span class="pnum">P3</span><h2>Programación de Pagos a Proveedores</h2></div><div class="secright"><span class="badge">Odoo al 28/jul</span></div></div>
+<div class="heroes">
+<div class="hero "><div class="hv">$2.53M</div><div class="hl">Total por pagar</div><div class="hs">104 facturas abiertas · Otakara es el 87%</div></div>
+<div class="hero bad"><div class="hv">$396K</div><div class="hl">Vencido reciente</div><div class="hs">24 facturas (menos de 45 días)</div></div>
+<div class="hero "><div class="hv">$683K</div><div class="hl">Próximos 7 días</div><div class="hs">23 facturas por programar</div></div>
+<div class="hero warn"><div class="hv">$118K</div><div class="hl">Antiguas por aclarar</div><div class="hs">4 facturas con más de 45 días</div></div>
+</div>
+<h3>Programación por semana</h3>
+<div class="bars"><div class="brow"><div class="blbl bad-t">Vencido</div><div class="btrack"><div class="bfill bf-bad" style="width:77.8%"></div></div><div class="bval">$514K <span class="mut">(28)</span></div></div><div class="brow"><div class="blbl">27/jul–02/ago</div><div class="btrack"><div class="bfill" style="width:68.6%"></div></div><div class="bval">$453K <span class="mut">(12)</span></div></div><div class="brow"><div class="blbl">03/ago–09/ago</div><div class="btrack"><div class="bfill" style="width:64.8%"></div></div><div class="bval">$428K <span class="mut">(20)</span></div></div><div class="brow"><div class="blbl">10/ago–16/ago</div><div class="btrack"><div class="bfill" style="width:100.0%"></div></div><div class="bval">$661K <span class="mut">(22)</span></div></div><div class="brow"><div class="blbl">17/ago–23/ago</div><div class="btrack"><div class="bfill" style="width:71.7%"></div></div><div class="bval">$474K <span class="mut">(22)</span></div></div></div>
+<h3>Vencimientos de los próximos 14 días</h3>
+<table class="tbl"><thead><tr><th>Vence</th><th>Proveedor</th><th></th><th class="num">Monto</th></tr></thead><tbody><tr><td>mié 29/jul</td><td>ESTAFETA MEXICANA</td><td class="mut">2 fact.</td><td class="num">$163,356.85</td></tr><tr><td>jue 30/jul</td><td>OTAKARA</td><td class="mut">5 fact.</td><td class="num">$120,717.45</td></tr><tr><td>vie 31/jul</td><td>RACKSPACE INTERNATIONAL</td><td class="mut">1 fact.</td><td class="num">$3,862.45</td></tr><tr><td>vie 31/jul</td><td>OTAKARA</td><td class="mut">1 fact.</td><td class="num">$2,673.34</td></tr><tr><td>sáb 01/ago</td><td>OTAKARA</td><td class="mut">3 fact.</td><td class="num">$162,848.97</td></tr><tr><td>lun 03/ago</td><td>OTAKARA</td><td class="mut">11 fact.</td><td class="num">$229,230.81</td></tr><tr><td>mié 05/ago</td><td>OTAKARA</td><td class="mut">2 fact.</td><td class="num">$9,176.06</td></tr><tr><td>vie 07/ago</td><td>OTAKARA</td><td class="mut">7 fact.</td><td class="num">$189,999.88</td></tr><tr><td>lun 10/ago</td><td>OTAKARA</td><td class="mut">7 fact.</td><td class="num">$235,193.48</td></tr></tbody></table>
+<h3>Antiguas por aclarar</h3>
+<table class="tbl"><thead><tr><th>Venció</th><th>Proveedor</th><th class="num">Monto</th></tr></thead><tbody><tr><td>10/feb <span class="mut">(533 días)</span></td><td>PROMOGRAPHIC &amp; DESIGN <span class="mut">FACTU/2025/02/0001</span></td><td class="num">$8,128.89</td></tr><tr><td>10/feb <span class="mut">(533 días)</span></td><td>PROMOGRAPHIC &amp; DESIGN <span class="mut">FACTU/2025/02/0002</span></td><td class="num">$21,956.72</td></tr><tr><td>05/ago <span class="mut">(357 días)</span></td><td>EXPERIENCIA Y SATISFACCION CON VALOR <span class="mut">FACTU/2025/08/0001</span></td><td class="num">$11,575.14</td></tr><tr><td>07/may <span class="mut">(82 días)</span></td><td>ADAPTA (SERV. TURISTICOS Y ARQ.) <span class="mut">FPRO/2026/05/0053</span></td><td class="num">$76,734.00</td></tr></tbody></table></section>
+<section class="card">
+<div class="sechead"><div><span class="pnum">P4</span><h2>Relación Otakara</h2></div><div class="secright"><span class="badge">Odoo al 28/jul</span><a class="verdet" href="https://jossycarmona.github.io/ADMIN-DEVIART/" target="_blank">Ver detalle →</a></div></div>
+<div class="heroes">
+<div class="hero "><div class="hv">$2.52M</div><div class="hl">Nos debe (por cobrar)</div><div class="hs">12 facturas FDIS</div></div>
+<div class="hero "><div class="hv">$2.21M</div><div class="hl">Le debemos (por pagar)</div><div class="hs">91 facturas FPRO</div></div>
+<div class="hero ok"><div class="hv">+$305K</div><div class="hl">Posición neta</div><div class="hs">a nuestro favor</div></div>
+<div class="hero bad"><div class="hv">$422K</div><div class="hl">Vencido por cobrar</div><div class="hs">2 facturas — cobrar YA</div></div>
+</div>
+<h3>Facturas por cobrar a Otakara</h3>
+<table class="tbl"><thead><tr><th>Factura</th><th>Vence</th><th>Estado</th><th class="num">Monto</th></tr></thead><tbody><tr class="rowbad"><td>FDIS/2026/00222</td><td>mar 21/jul</td><td>VENCIDA</td><td class="num">$306,240.00</td></tr><tr class="rowbad"><td>FDIS/2026/00223</td><td>mar 21/jul</td><td>VENCIDA</td><td class="num">$115,286.60</td></tr><tr class=""><td>FDIS/2026/00231</td><td>sáb 01/ago</td><td>por vencer</td><td class="num">$306,240.00</td></tr><tr class=""><td>FDIS/2026/00232</td><td>sáb 01/ago</td><td>por vencer</td><td class="num">$115,286.60</td></tr><tr class=""><td>FDIS/2026/00243</td><td>sáb 08/ago</td><td>por vencer</td><td class="num">$306,240.00</td></tr><tr class=""><td>FDIS/2026/00244</td><td>sáb 08/ago</td><td>por vencer</td><td class="num">$115,286.60</td></tr><tr class=""><td>FDIS/2026/00270</td><td>lun 24/ago</td><td>por vencer</td><td class="num">$408,320.00</td></tr><tr class=""><td>FDIS/2026/00292</td><td>sáb 05/sep</td><td>por vencer</td><td class="num">$306,240.00</td></tr><tr class=""><td>FDIS/2026/00293</td><td>sáb 05/sep</td><td>por vencer</td><td class="num">$115,286.60</td></tr><tr class=""><td>FDIS/2026/00303</td><td>mar 15/sep</td><td>por vencer</td><td class="num">$204,160.00</td></tr><tr class=""><td>FDIS/2026/00307</td><td>sáb 19/sep</td><td>por vencer</td><td class="num">$102,080.00</td></tr><tr class=""><td>FDIS/2026/00308</td><td>sáb 19/sep</td><td>por vencer</td><td class="num">$115,286.60</td></tr></tbody></table>
+<div class="nota">Por pagar a Otakara ya vencido: <b>$361,223.00</b> (18 facturas) — el detalle de la programación está en P3.</div></section>
+<section class="card">
+<div class="sechead"><div><span class="pnum">P5</span><h2>Inversión</h2></div><div class="secright"><span class="badge">Corte 2026-07-27</span><a class="verdet" href="https://jossycarmona.github.io/INVERSION-BBVA/" target="_blank">Ver detalle →</a></div></div>
+<div class="heroes">
+<div class="hero "><div class="hv">$16.15M</div><div class="hl">Posición del fondo</div><div class="hs">BBVAPYM serie B-5 (deuda corto plazo, AAA/1)</div></div>
+<div class="hero "><div class="hv">5.75%</div><div class="hl">Rendimiento anual neto</div><div class="hs">jul 2025 – jun 2026</div></div>
+<div class="hero "><div class="hv">$755K</div><div class="hl">Ganancia 12 meses</div><div class="hs">ISR retenido acreditable $98,038</div></div>
+</div>
+<div class="nota">CETES 28d promedio 7.00% (−1.25 pp) · Inflación 3.37% (+2.4 pp real). Revisión mensual al llegar el estado de cuenta.</div></section>
+
+<section class="card">
+<div class="sechead"><div><h2>🗂️ Todos los tableros</h2></div></div>
+<div class="dgrid"><a class="dcard" href="https://jossycarmona.github.io/ADMIN-DEVIART/" target="_blank"><b>Semanal Dirección</b><span>Posición bancaria · Otakara · Cobranza · Gastos fijos</span></a><a class="dcard" href="https://jossycarmona.github.io/IVA-2026/" target="_blank"><b>IVA</b><span>Ingresos vs egresos BBVA + Santander</span></a><a class="dcard" href="https://jossycarmona.github.io/VENTAS-DEVIART/distribuidores.html" target="_blank"><b>Ventas Distribuidores</b><span>Panel diario</span></a><a class="dcard" href="https://jossycarmona.github.io/VENTAS-DEVIART/impresion.html" target="_blank"><b>Ventas Impresión</b><span>Panel diario</span></a><a class="dcard" href="https://jossycarmona.github.io/INGRESOS-2026/" target="_blank"><b>Ingresos UUPZ</b><span>Mensual por canal</span></a><a class="dcard" href="https://jossycarmona.github.io/INVERSION-BBVA/" target="_blank"><b>Inversión BBVA</b><span>Fondo BBVAPYM</span></a><a class="dcard" href="https://jossycarmona.github.io/RENTABILIDAD-FDS/" target="_blank"><b>Rentabilidad FDS</b><span>Equipo fin de semana</span></a></div>
+</section>
+
+<footer>Centro de Mando Administrativo · generado mar 28 de julio de 2026 · fuentes: Odoo (pagos, Otakara), saldos bancarios (Al 27/Jul/2026), pago provisional Junio 2026, IVA por flujo al 27/07/2026, inversión al 2026-07-27</footer>
+</body>
+</html>
