@@ -101,10 +101,10 @@ footer { text-align:center; color:var(--mut); font-size:.78rem; margin:18px 0; }
 </div>
 <div class="grouplabel">Flujo de Efectivo — Septiembre 2026 <span class="src">flujo bancario al 24/09/2026 (dashboard IVA 2026)</span></div>
 <div class="kpis">
-<div class="kpi "><div class="kv">$3.09M</div><div class="kl">Ingresos del mes</div><div class="ks">137 depósitos BBVA + Santander</div></div>
-<div class="kpi "><div class="kv">$3.04M</div><div class="kl">Egresos del mes</div><div class="ks">110 movimientos</div></div>
-<div class="kpi ok"><div class="kv">+$43K</div><div class="kl">Flujo neto del mes</div><div class="ks">entró más de lo que salió</div></div>
-<div class="kpi "><div class="kv">$-93K</div><div class="kl">IVA del mes (estimado)</div><div class="ks">se declara el 17 del mes siguiente</div></div>
+<div class="kpi "><div class="kv">$3.12M</div><div class="kl">Ingresos del mes</div><div class="ks">141 depósitos BBVA + Santander</div></div>
+<div class="kpi "><div class="kv">$3.74M</div><div class="kl">Egresos del mes</div><div class="ks">120 movimientos</div></div>
+<div class="kpi bad"><div class="kv">−$626K</div><div class="kl">Flujo neto del mes</div><div class="ks">salió más de lo que entró</div></div>
+<div class="kpi "><div class="kv">$-185K</div><div class="kl">IVA del mes (estimado)</div><div class="ks">se declara el 17 del mes siguiente</div></div>
 </div>
 <div class="grouplabel">Cuentas por Pagar y por Cobrar <span class="src">Odoo hoy + semanal Dirección</span></div>
 <div class="kpis">
@@ -124,7 +124,7 @@ footer { text-align:center; color:var(--mut); font-size:.78rem; margin:18px 0; }
 
 <section class="card">
 <div class="sechead"><div><h2>📋 Qué hacer hoy</h2></div></div>
-<div class="accion"><div class="acnum s-rojo">1</div><div><div class="actit">Pagar HOY las 2 facturas de proveedor vencidas: $228,140</div><div class="acdet">Por banco: BBVA $228,140 (2).</div></div></div><div class="accion"><div class="acnum s-rojo">2</div><div><div class="actit">Declaración de Agosto 2026 en -7 días</div><div class="acdet">Fecha límite jue 17/sep. Referencia del paquete pasado: $508,041.</div></div></div><div class="accion"><div class="acnum s-ambar">3</div><div><div class="actit">Cuadrar egresos de Santander contra Odoo</div><div class="acdet">Santander: Odoo $2,101,347.44 (80) vs banco $2,069,470.70 (77) → +$31,876.74. Pídeme: “concilia Santander”.</div></div></div><div class="accion"><div class="acnum s-ambar">4</div><div><div class="actit">Programar los pagos de proveedores de los próximos 7 días: $133,678</div><div class="acdet">2 facturas · por banco: BBVA $133,678 (2).</div></div></div><div class="accion"><div class="acnum s-ambar">5</div><div><div class="actit">Vienen pagos fuertes esta semana: ~$111,310</div><div class="acdet">Nómina semanal $55K (vie 25/sep) · Renta vehículos $40K (vie 25/sep) · Asesoría $16K (mar 29/sep).</div></div></div><div class="accion"><div class="acnum s-azul">6</div><div><div class="actit">Viernes 25/sep: preparar pago a Otakara por $1,208,547</div><div class="acdet">40 facturas acumuladas al viernes (36 ya vencidas). Otakara se paga SOLO los viernes.</div></div></div>
+<div class="accion"><div class="acnum s-rojo">1</div><div><div class="actit">Pagar HOY las 2 facturas de proveedor vencidas: $228,140</div><div class="acdet">Por banco: BBVA $228,140 (2).</div></div></div><div class="accion"><div class="acnum s-rojo">2</div><div><div class="actit">Declaración de Agosto 2026 en -7 días</div><div class="acdet">Fecha límite jue 17/sep. Referencia del paquete pasado: $508,041.</div></div></div><div class="accion"><div class="acnum s-ambar">3</div><div><div class="actit">Cuadrar egresos de BBVA contra Odoo</div><div class="acdet">BBVA: Odoo $975,169.55 (33) vs banco $1,671,764.61 (43) → −$696,595.06. Pídeme: “concilia BBVA”.</div></div></div><div class="accion"><div class="acnum s-ambar">4</div><div><div class="actit">Programar los pagos de proveedores de los próximos 7 días: $133,678</div><div class="acdet">2 facturas · por banco: BBVA $133,678 (2).</div></div></div><div class="accion"><div class="acnum s-ambar">5</div><div><div class="actit">Vienen pagos fuertes esta semana: ~$111,310</div><div class="acdet">Nómina semanal $55K (vie 25/sep) · Renta vehículos $40K (vie 25/sep) · Asesoría $16K (mar 29/sep).</div></div></div><div class="accion"><div class="acnum s-azul">6</div><div><div class="actit">Viernes 25/sep: preparar pago a Otakara por $1,208,547</div><div class="acdet">40 facturas acumuladas al viernes (36 ya vencidas). Otakara se paga SOLO los viernes.</div></div></div>
 </section>
 
 <section class="card">
@@ -139,11 +139,11 @@ footer { text-align:center; color:var(--mut); font-size:.78rem; margin:18px 0; }
 <details><summary>Ver saldos por cuenta y cuadre detallado</summary>
 <table class="tbl"><thead><tr><th>Banco</th><th class="num">Saldo</th><th>Cuentas</th></tr></thead><tbody><tr><td><span class="dot" style="background:#EC0000"></span>Santander <span class="mut">(MXN)</span></td><td class="num">$44,192.45</td><td class="mut small">Cuenta corriente 65504129495 $44,192.45</td></tr><tr><td><span class="dot" style="background:#004481"></span>BBVA <span class="mut">(MXN)</span></td><td class="num">$15,705,425.90</td><td class="mut small">Bancomer •9144 $437,109.73 · Inversión •8097 $15,268,316.17</td></tr><tr><td><span class="dot" style="background:#16a34a"></span>Monex <span class="mut">(USD)</span></td><td class="num">$1,317,493.13</td><td class="mut small">Fondo en USD · valuación al T/C del día $1,317,493.13</td></tr></tbody></table>
 <h3>Cuadre de egresos: banco vs Odoo</h3>
-<table class="tbl"><thead><tr><th>Banco</th><th class="num">Estado de cuenta</th><th class="num">Pólizas Odoo</th><th class="num">Diferencia</th></tr></thead><tbody><tr><td>✅ BBVA</td><td class="num">$975,169.55 <span class="mut">(33)</span></td>
+<table class="tbl"><thead><tr><th>Banco</th><th class="num">Estado de cuenta</th><th class="num">Pólizas Odoo</th><th class="num">Diferencia</th></tr></thead><tbody><tr><td>⚠️ BBVA</td><td class="num">$1,671,764.61 <span class="mut">(43)</span></td>
 <td class="num">$975,169.55 <span class="mut">(33)</span></td>
-<td class="num okc">al centavo</td></tr><tr><td>⚠️ Santander</td><td class="num">$2,069,470.70 <span class="mut">(77)</span></td>
-<td class="num">$2,101,347.44 <span class="mut">(80)</span></td>
-<td class="num badc">+$31,876.74</td></tr></tbody></table>
+<td class="num badc">−$696,595.06</td></tr><tr><td>✅ Santander</td><td class="num">$2,069,470.70 <span class="mut">(77)</span></td>
+<td class="num">$2,069,470.70 <span class="mut">(77)</span></td>
+<td class="num okc">al centavo</td></tr></tbody></table>
 <div class="nota">Si un banco no cuadra, pídeme <b>“concilia Santander”</b> o <b>“concilia BBVA”</b> y te digo exactamente qué pólizas faltan o sobran.</div></details>
 <div class="nota">Crediproveedores BBVA por vencer: <b>$864,347.87</b> (DIA8083165 vence 05/Nov/2026) — sale de la cuenta corriente ese día.</div>
 <div class="nota">El pago Otakara del viernes ($1,208,547) está repartido 60% BBVA / 40% Santander según el histórico — tú decides de dónde sale.</div></section>
@@ -166,7 +166,7 @@ footer { text-align:center; color:var(--mut); font-size:.78rem; margin:18px 0; }
 <div class="sechead"><div><span class="pnum">P2</span><h2>Impuestos — IVA · ISR · Retenciones</h2></div><div class="secright"><span class="badge">Declarado: Junio 2026</span><a class="verdet" href="https://jossycarmona.github.io/IVA-2026/" target="_blank">Ver detalle →</a></div></div>
 <div class="heroes">
 <div class="hero "><div class="hv">$508K</div><div class="hl">Paquete fiscal Junio 2026</div><div class="hs">IVA + ISR + retenciones declarados</div></div>
-<div class="hero "><div class="hv">$-93K</div><div class="hl">IVA del mes en curso</div><div class="hs">estimado por flujo bancario al 24/09/2026</div></div>
+<div class="hero "><div class="hv">$-185K</div><div class="hl">IVA del mes en curso</div><div class="hs">estimado por flujo bancario al 24/09/2026</div></div>
 <div class="hero bad"><div class="hv">jue 17/sep</div><div class="hl">Próxima declaración</div><div class="hs">período Agosto 2026 · en -7 días · sale de Santander</div></div>
 </div>
 <details><summary>Ver desglose de la declaración de Junio 2026</summary>
